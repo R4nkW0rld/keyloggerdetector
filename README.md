@@ -16,7 +16,7 @@ Keylogger Detector is a defensive security tool designed to protect your system 
 
 The Keylogger Detector features an intuitive CustomTkinter-based GUI dashboard that provides real-time monitoring and threat detection:
 
-![Keylogger Sentinel GUI Dashboard](https://github.com/R4nkW0rld/keyloggerdetector/assets/raw/main/gui_screenshot.png)
+![Keylogger Sentinel GUI Dashboard](https://raw.githubusercontent.com/user-attachments/image-1.png)
 
 **GUI Features:**
 - **Start Scan Button** - Initiates real-time process scanning and threat analysis
