@@ -1,0 +1,8 @@
+PID,Name,Executable,Username,Parent,CPU%,Memory MB,Risk Score,Severity,SHA256,Known Bad,Reasons,Network Connections,Persistence Mechanisms
+12345,suspicious_key.exe,/tmp/suspicious_key.exe,user,wscript.exe,2.5,45.2,105,Critical,e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855,True,"Suspicious keywords: keylog, hook, capture | Suspicious path: /tmp | Suspicious parent: wscript.exe spawned by outlook.exe | Executable matches known-bad hash | Hidden execution: Suspicious flag: --hidden; Suspicious flag: --daemon",198.51.100.42:4444 (ESTABLISHED),None
+9876,clipboard_monitor,/home/user/.config/autostart/clipboard_monitor,user,systemd,0.8,12.1,60,High,,"Suspicious keywords: clipboard, capture | Suspicious keywords: upload",203.0.113.50:8443 (ESTABLISHED),"Autostart Desktop Entry: clipboard_monitor.desktop"
+11223,macro_runner.exe,C:\Users\user\Downloads\macro_runner.exe,user,excel.exe,15.3,88.4,45,Medium,,"Suspicious keywords: macro, autoplay | Suspicious path: downloads | Suspicious parent: excel.exe",None,None
+44556,uhook_service,/usr/lib/systemd/system/uhook_service.service,root,systemd,0.1,2.3,35,Medium,,"Suspicious keywords: hook, input_hook",None,None
+77889,autohotkey.exe,C:\Program Files\AutoHotkey\AutoHotkey.exe,user,explorer.exe,1.2,25.0,20,Low,,"Suspicious keywords: autohotkey",None,None
+88990,xdotool_script,/tmp/xdotool_script.sh,user,bash,0.0,1.1,15,Low,,"Suspicious keywords: xdotool | Suspicious path: /tmp",None,None
+99001,unknown_helper,/dev/shm/helper,user,python3,0.5,5.5,35,Low,,"Suspicious path: /dev/shm",None,None

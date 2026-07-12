@@ -1,0 +1,101 @@
+{
+  "tool": "Keylogger Sentinel",
+  "version": "1.0.0",
+  "report_generated": "2026-07-12 14:30:00",
+  "scan_timestamp": 1752346200.0,
+  "platform": "linux",
+  "total_processes": 285,
+  "scanned_processes": 285,
+  "scan_duration_seconds": 2.34,
+  "summary": {
+    "critical": 1,
+    "high": 1,
+    "medium": 2,
+    "low": 3,
+    "total_findings": 7
+  },
+  "findings": [
+    {
+      "pid": 12345,
+      "name": "suspicious_key.exe",
+      "exe": "/tmp/suspicious_key.exe",
+      "cmdline": ["/tmp/suspicious_key.exe", "--hidden", "--daemon"],
+      "username": "user",
+      "parent": "wscript.exe",
+      "cpu_percent": 2.5,
+      "memory_mb": 45.2,
+      "risk_score": 105,
+      "severity": "Critical",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "known_bad_hash": true,
+      "reasons": [
+        "Suspicious keywords: keylog, hook, capture",
+        "Suspicious path: /tmp",
+        "Suspicious parent: wscript.exe spawned by outlook.exe",
+        "Executable matches known-bad hash",
+        "Suspicious flag: --hidden",
+        "Suspicious flag: --daemon"
+      ],
+      "breakdown": [
+        {"category": "keyword_match", "points": 45, "reason": "Suspicious keywords: keylog, hook, capture"},
+        {"category": "suspicious_path", "points": 20, "reason": "Suspicious path: /tmp"},
+        {"category": "suspicious_parent", "points": 10, "reason": "Suspicious parent: wscript.exe spawned by outlook.exe"},
+        {"category": "known_bad_hash", "points": 40, "reason": "Executable matches known-bad hash"},
+        {"category": "hidden_execution", "points": 30, "reason": "Hidden execution: Suspicious flag: --hidden; Suspicious flag: --daemon"}
+      ],
+      "network": [
+        {
+          "remote": "198.51.100.42:4444",
+          "local": "192.168.1.100:52341",
+          "status": "ESTABLISHED",
+          "flagged": true,
+          "flags": ["Suspicious port: 4444", "Established external TCP connection"]
+        }
+      ],
+      "persistence": []
+    },
+    {
+      "pid": 9876,
+      "name": "clipboard_monitor",
+      "exe": "/home/user/.config/autostart/clipboard_monitor",
+      "cmdline": ["/home/user/.config/autostart/clipboard_monitor", "--capture", "--upload"],
+      "username": "user",
+      "parent": "systemd",
+      "cpu_percent": 0.8,
+      "memory_mb": 12.1,
+      "risk_score": 60,
+      "severity": "High",
+      "sha256": "",
+      "known_bad_hash": false,
+      "reasons": [
+        "Suspicious keywords: clipboard, capture",
+        "Suspicious keywords: upload"
+      ],
+      "breakdown": [
+        {"category": "keyword_match", "points": 30, "reason": "Suspicious keywords: clipboard, capture"},
+        {"category": "network_connection", "points": 25, "reason": "Remote connection on known-bad port"},
+        {"category": "persistence", "points": 20, "reason": "Persistence mechanisms: Autostart Desktop Entry"}
+      ],
+      "network": [
+        {
+          "remote": "203.0.113.50:8443",
+          "local": "192.168.1.100:44512",
+          "status": "ESTABLISHED",
+          "flagged": true,
+          "flags": ["Established external TCP connection", "External connection on high port 8443"]
+        }
+      ],
+      "persistence": [
+        {
+          "method": "Autostart Desktop Entry",
+          "location": "/home/user/.config/autostart",
+          "entry": "clipboard_monitor.desktop",
+          "command": "[Desktop Entry]\nName=Clipboard Monitor\nExec=/home/user/.config/autostart/clipboard_monitor --capture --upload",
+          "flagged": false,
+          "flags": []
+        }
+      ]
+    }
+  ],
+  "errors": []
+}
