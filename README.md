@@ -142,40 +142,6 @@ keylogger_sentinel/
 | **Critical** ⛔ | 76+ | Multiple strong indicators, immediate action required |
 
 ---
-
-## ⚙️ Configuration
-
-Edit `config.yaml` to customize the scanner behavior:
-
-```yaml
-weights:
-  keyword_match: 15
-  suspicious_path: 20
-  suspicious_parent: 10
-  hidden_execution: 15
-  system_hooks: 35
-  known_bad_hash: 40
-  network_connection: 25
-  persistence: 20
-
-thresholds:
-  low: 0
-  medium: 26
-  high: 51
-  critical: 76
-
-scan_interval_seconds: 10
-
-whitelist:
-  names:
-    - "svchost.exe"
-    - "explorer.exe"
-  pids: []
-  paths: []
-
-known_bad_hashes_file: "known_bad_hashes.yaml"
-```
-
 ### Tuning False Positives
 
 1. **Add to Whitelist**: Right-click a finding in the GUI → "Whitelist" to exclude by PID or name
