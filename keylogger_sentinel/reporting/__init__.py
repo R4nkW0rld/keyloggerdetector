@@ -1,1 +1,1 @@
-"""Reporting modules for Keylogger Sentinel."""
+"""Reporting modules for Keylogger Detector."""

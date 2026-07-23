@@ -22,7 +22,7 @@ def generate_json_report(result: ScanResult, output_path: str) -> str:
     """
     data = result.to_dict()
     data["report_generated"] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    data["tool"] = "Keylogger Sentinel"
+    data["tool"] = "Keylogger Detector"
     data["version"] = "1.0.0"
 
     os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)

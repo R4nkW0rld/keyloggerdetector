@@ -46,7 +46,7 @@ class ConfigManager:
             "level": "INFO",
             "max_bytes": 5_242_880,
             "backup_count": 3,
-            "log_file": "logs/sentinel.log",
+            "log_file": "logs/detector.log",
         },
         "export": {
             "default_format": "json",

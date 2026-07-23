@@ -90,7 +90,7 @@ def generate_html_report(result: ScanResult, output_path: str) -> str:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Keylogger Sentinel Report - {timestamp}</title>
+    <title>Keylogger Detector Report - {timestamp}</title>
     <style>
         * {{ box-sizing: border-box; margin: 0; padding: 0; }}
         body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -114,7 +114,7 @@ def generate_html_report(result: ScanResult, output_path: str) -> str:
 <body>
 <div class="container">
     <header>
-        <h1>Keylogger Sentinel Report</h1>
+        <h1>Keylogger Detector Report</h1>
         <p>Scan timestamp: {timestamp} | Platform: {html.escape(result.platform)}</p>
     </header>
 
@@ -155,7 +155,7 @@ def generate_html_report(result: ScanResult, output_path: str) -> str:
     </div>
 
     <footer>
-        Keylogger Sentinel v1.0.0 | Generated {timestamp}
+        Keylogger Detector v1.0.0 | Generated {timestamp}
     </footer>
 </div>
 </body>

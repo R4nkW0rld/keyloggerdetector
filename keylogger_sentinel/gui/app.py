@@ -1,4 +1,4 @@
-"""Main GUI application for Keylogger Sentinel."""
+"""Main GUI application for Keylogger Detector."""
 
 from __future__ import annotations
 
@@ -31,15 +31,15 @@ from utils.whitelist import WhitelistManager
 from utils.logger import logger
 
 
-class SentinelApp:
-    """Main application window for Keylogger Sentinel.
+class DetectorApp:
+    """Main application window for Keylogger Detector.
 
     Manages the dashboard, scanning lifecycle, auto-refresh, and
     user interactions. All detection logic is delegated to the
     KeyloggerDetector engine.
     """
 
-    APP_TITLE = "Keylogger Sentinel v1.0.0"
+    APP_TITLE = "Keylogger Detector v1.0.0"
     APP_MIN_SIZE = (1100, 650)
 
     def __init__(self) -> None:
@@ -232,7 +232,7 @@ class SentinelApp:
 
         os.makedirs(output_dir, exist_ok=True)
         ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-        path = os.path.join(output_dir, f"sentinel_report_{ts}.{fmt}")
+        path = os.path.join(output_dir, f"detector_report_{ts}.{fmt}")
 
         try:
             if fmt == "json":
@@ -277,18 +277,18 @@ class SentinelApp:
                 ctypes.windll.user32.MessageBoxW(
                     0,
                     f"Critical: {result.critical_count}\nHigh: {result.high_count}\n\n"
-                    f"Open Keylogger Sentinel for details.",
-                    "Keylogger Sentinel Alert",
+                    f"Open Keylogger Detector for details.",
+                    "Keylogger Detector Alert",
                     0x30 | 0x1000,
                 )
             elif sys.platform == "darwin":
                 os.system(
                     f'osascript -e \'display notification "Critical: {result.critical_count}" '
-                    f'with title "Keylogger Sentinel"\''
+                    f'with title "Keylogger Detector"\''
                 )
             else:
                 os.system(
-                    f'notify-send "Keylogger Sentinel" '
+                    f'notify-send "Keylogger Detector" '
                     f'"Critical: {result.critical_count} | High: {result.high_count}"'
                 )
         except Exception:
@@ -296,7 +296,7 @@ class SentinelApp:
 
     def run(self) -> None:
         """Start the application main loop."""
-        logger.info("Keylogger Sentinel GUI started")
+        logger.info("Keylogger Detector GUI started")
         if self._auto_refresh:
             self._schedule_refresh()
         self.root.mainloop()

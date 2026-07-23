@@ -1,1 +1,1 @@
-"""GUI modules for Keylogger Sentinel."""
+"""GUI modules for Keylogger Detector."""

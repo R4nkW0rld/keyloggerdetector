@@ -1,4 +1,4 @@
-"""Reusable GUI widgets for Keylogger Sentinel."""
+"""Reusable GUI widgets for Keylogger Detector."""
 
 from __future__ import annotations
 

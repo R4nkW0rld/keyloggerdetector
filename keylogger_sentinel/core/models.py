@@ -1,4 +1,4 @@
-"""Data models and typed structures for Keylogger Sentinel."""
+"""Data models and typed structures for Keylogger Detector."""
 
 from __future__ import annotations
 

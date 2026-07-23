@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Launcher for Keylogger Sentinel from the workspace root."""
+"""Launcher for Keylogger Detector from the workspace root."""
 
 import os
 import subprocess

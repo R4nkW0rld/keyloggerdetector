@@ -1,1 +1,1 @@
-"""Utility modules for Keylogger Sentinel."""
+"""Utility modules for Keylogger Detector."""

@@ -1,4 +1,4 @@
-"""Core detection modules for Keylogger Sentinel."""
+"""Core detection modules for Keylogger Detector."""
 
 from core.models import (
     Finding,

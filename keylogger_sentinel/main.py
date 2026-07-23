@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Keylogger Sentinel – Defensive keylogger detection tool.
+"""Keylogger Detector – Defensive keylogger detection tool.
 
 This tool detects suspicious keylogger-like activity on a user's own
 machine. It NEVER captures keystrokes, records input, or exfiltrates
@@ -22,15 +22,47 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 
 def run_gui(config_path: str | None = None) -> None:
-    """Launch the GUI application."""
+    """Launch the PySide6 GUI application."""
+    from utils.logger import logger
+
+    logger.info("Starting Keylogger Detector GUI (PySide6)")
+
+    try:
+        from PySide6.QtWidgets import QApplication
+        from PySide6.QtGui import QFont
+        from PySide6.QtCore import Qt
+        from ui.main_window import MainWindow
+
+        app = QApplication(sys.argv)
+        app.setApplicationName("Keylogger Detector")
+        app.setApplicationVersion("1.0.0")
+
+        font = QFont("Inter, Segoe UI, SF Pro Display, Roboto, Helvetica Neue, Arial", 13)
+        app.setFont(font)
+
+        window = MainWindow(config_path=config_path)
+        window.show()
+
+        sys.exit(app.exec())
+    except ImportError as e:
+        print(f"PySide6 dependencies missing: {e}")
+        print("Install with: pip install PySide6")
+        sys.exit(1)
+    except Exception as e:
+        logger.error(f"GUI failed to start: {e}")
+        raise
+
+
+def run_gui_legacy(config_path: str | None = None) -> None:
+    """Launch the legacy CustomTkinter GUI application."""
     from utils.config import ConfigManager
     from utils.logger import logger
 
-    logger.info("Starting Keylogger Sentinel GUI")
+    logger.info("Starting Keylogger Detector GUI (Legacy)")
 
     try:
-        from gui.app import SentinelApp
-        app = SentinelApp()
+        from gui.app import DetectorApp
+        app = DetectorApp()
         app.run()
     except ImportError as e:
         print(f"GUI dependencies missing: {e}")
@@ -54,7 +86,7 @@ def run_cli(config_path: str | None = None) -> None:
     detector = KeyloggerDetector(config.data)
 
     print("=" * 60)
-    print("  Keylogger Sentinel - CLI Scan")
+    print("  Keylogger Detector - CLI Scan")
     print("=" * 60)
     print()
 
@@ -101,7 +133,7 @@ def run_cli(config_path: str | None = None) -> None:
 def main() -> None:
     """Parse arguments and launch the appropriate mode."""
     parser = argparse.ArgumentParser(
-        description="Keylogger Sentinel - Defensive Keylogger Detection Tool",
+        description="Keylogger Detector - Defensive Keylogger Detection Tool",
         epilog="IMPORTANT: This tool NEVER captures keystrokes or exfiltrates data.",
     )
     parser.add_argument(
@@ -109,17 +141,23 @@ def main() -> None:
         help="Run in CLI mode (single scan, no GUI)",
     )
     parser.add_argument(
+        "--legacy", action="store_true",
+        help="Use legacy CustomTkinter GUI instead of PySide6",
+    )
+    parser.add_argument(
         "--config", type=str, default="config.yaml",
         help="Path to YAML configuration file (default: config.yaml)",
     )
     parser.add_argument(
-        "--version", action="version", version="Keylogger Sentinel 1.0.0",
+        "--version", action="version", version="Keylogger Detector 1.0.0",
     )
 
     args = parser.parse_args()
 
     if args.cli:
         run_cli(args.config)
+    elif args.legacy:
+        run_gui_legacy(args.config)
     else:
         run_gui(args.config)
 

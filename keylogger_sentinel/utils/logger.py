@@ -11,7 +11,7 @@ from typing import Optional
 def setup_logger(
     name: str = "keylogger_sentinel",
     level: str = "INFO",
-    log_file: str = "logs/sentinel.log",
+    log_file: str = "logs/detector.log",
     max_bytes: int = 5_242_880,
     backup_count: int = 3,
 ) -> logging.Logger:

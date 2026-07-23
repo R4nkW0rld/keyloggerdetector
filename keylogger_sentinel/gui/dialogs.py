@@ -1,4 +1,4 @@
-"""Dialog windows for Keylogger Sentinel."""
+"""Dialog windows for Keylogger Detector."""
 
 from __future__ import annotations
 
